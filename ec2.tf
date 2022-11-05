@@ -14,7 +14,7 @@ resource "aws_instance" "Haproxy_backend1" {
   ami                    = var.ami
   instance_type          = var.instance_type
   availability_zone      = var.az1
-  subnet_id              = aws_subnet.private1.id
+  subnet_id              = aws_subnet.private2.id
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.web_sg2.id]
   count                  = var.node_count
