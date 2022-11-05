@@ -17,11 +17,12 @@ pipeline {
                 sh 'terraform apply --auto-approve'
             }
         }
-        stage('terraform output'){
-            steps {
-                sh'''
-                chmod +x file.sh
-                ./file.sh ubuntu /home/ubuntu/haproxy.pem
-                 '''
-            }
-        }
+//         stage('terraform output'){
+//             steps {
+//                 sh'''
+//                 chmod +x file.sh
+//                 ./file.sh ubuntu /home/ubuntu/haproxy.pem
+//                  '''
+//             }
+//         }
+    }
