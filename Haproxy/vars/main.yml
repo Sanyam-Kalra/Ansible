@@ -1,0 +1,4 @@
+---
+# vars file for Haproxy
+web01_ip: 172.31.42.20
+web02_ip: 172.31.39.28
