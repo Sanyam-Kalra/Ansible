@@ -32,7 +32,7 @@ pipeline {
                 IP=$(terraform output -json public_config_ec2 | jq -s -r '.[]')
                 echo $IP
                 ssh -i "/var/lib/jenkins/haproxy.pem" -o StrictHostKeyChecking=no -tt ubuntu@$IP "rm -rf Invnetory haproxy.pem"
-                scp -i "/var/lib/jenkins/haproxy.pem" -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/Finaltool/Invnetory ubuntu@$IP:~
+                scp -i "/var/lib/jenkins/haproxy.pem" -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/FinalTool/Invnetory ubuntu@$IP:~
                 scp -i "/var/lib/jenkins/haproxy.pem" -o StrictHostKeyChecking=no -r /var/lib/jenkins/haproxy.pem ubuntu@$IP:~
                 '''
             }
