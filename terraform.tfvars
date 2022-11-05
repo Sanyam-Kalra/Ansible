@@ -30,9 +30,9 @@ igw_tags = {
   Name = "Haproxy_igw"
 }
 
-az2 = "us-east-2a"
+az2 = "us-east-1a"
 
-az1 = "us-east-2b"
+az1 = "us-east-1b"
 
 rt_tags = {
   Name = "Haproxy_rt"
