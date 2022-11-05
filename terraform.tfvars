@@ -30,9 +30,9 @@ igw_tags = {
   Name = "Haproxy_igw"
 }
 
-az2 = "us-east-1a"
+az2 = "us-east-1d"
 
-az1 = "us-east-1b"
+az1 = "us-east-1d"
 
 rt_tags = {
   Name = "Haproxy_rt"
@@ -40,7 +40,7 @@ rt_tags = {
 
 key_name = "haproxy"
 
-node_count = "2"
+node_count = "1"
 
 instance_type = "t2.micro"
 
