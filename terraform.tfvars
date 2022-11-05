@@ -40,7 +40,7 @@ rt_tags = {
 
 key_name = "haproxy"
 
-node_count = "2"
+node_count = "1"
 
 instance_type = "t2.micro"
 
