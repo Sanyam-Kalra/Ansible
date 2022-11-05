@@ -32,7 +32,7 @@ igw_tags = {
 
 az2 = "us-east-1d"
 
-az1 = "us-east-1d"
+az1 = "us-east-1a"
 
 rt_tags = {
   Name = "Haproxy_rt"
