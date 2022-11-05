@@ -15,3 +15,8 @@ output "private-ip-backend1" {
 output "private-ip-Haproxy_backend2" {
   value = "${aws_instance.Haproxy_backend2.*.private_ip}"
 }
+
+output "public_config_ec2" {
+  value = aws_instance.config_ec2.public_ip
+  
+}
