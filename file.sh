@@ -4,9 +4,12 @@ USER=$1
 Key_path=$2
 touch  storefile
 echo "" > storefile
-IP=$(terraform output -json bashinstance_ip | jq -s -r '.[]')
+IP=$(terraform output -json private-ip | jq -s -r '.[]')
 echo $IP >> storefile
-
+IP=$(terraform output -json private-ip-backend1 | jq -s -r '.[]')
+echo $IP >> storefile
+IP=$(terraform output -json private-ip-Haproxy_backend2 | jq -s -r '.[]')
+echo $IP >> storefile
  touch Invnetory 
  echo "" > Invnetory
  echo "[seed-nodes]" > Invnetory
