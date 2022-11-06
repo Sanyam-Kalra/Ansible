@@ -41,8 +41,9 @@ backend webapps
     mode http
     balance roundrobin
     option forwardfor
-    server  web01   "{{ web01_ip }}":80 check
-    server  web02   "{{ web02_ip }}":80 check
+{% for host in groups['Backend'] %}
+server app1 {{ host }}:80 check
+{% endfor %}
     
 listen stats
     stats enable
