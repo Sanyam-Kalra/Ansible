@@ -3,7 +3,7 @@
 - name: Update & upgrade apt cache
   apt:
     update_cache: yes
-    upgrade: full
+ 
 
 - name: Install software-properties-common
   apt:
