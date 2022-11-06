@@ -42,7 +42,7 @@ backend webapps
     balance roundrobin
     option forwardfor
 {% for host in groups['Backend'] %}
-server app1 {{ hostvars[i]['ansible_default_ipv4']['address'] }}:80 check
+server app1 {{ host_name }}:80 check
 {% endfor %}
     
 listen stats
