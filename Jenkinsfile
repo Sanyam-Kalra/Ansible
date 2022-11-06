@@ -89,6 +89,19 @@ pipeline {
                 '''
             }
         }
+           stage('Sleep'){
+             when {
+               
+                expression { params.Infra == 'Apply' }
+            }
+            steps {
+               sh'''
+               sleep 30
+               '''
+            }
+        }
+        
+        
         stage('Role setup'){
              when {
                
