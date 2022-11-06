@@ -46,6 +46,7 @@ server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:80 che
 {% endfor %}
     
 listen stats
+    bind *:81
     stats enable
     stats hide-version
     stats refresh 30s
