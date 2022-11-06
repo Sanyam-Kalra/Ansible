@@ -15,6 +15,7 @@ echo $IP >> storefile
      ((j++))
      ((i++))
  done
+echo "" > storefile
 IP=$(terraform output -json private-ip-backend1 | jq -r '.[]')
 echo $IP >> storefile
 IP=$(terraform output -json private-ip-Haproxy_backend2 | jq -r '.[]')
