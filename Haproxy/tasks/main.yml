@@ -1,8 +1,8 @@
 ---
 # tasks file for Haproxy
-# - name: Update & upgrade apt cache
-#   apt:
-#     update_cache: yes
+- name: Update & upgrade apt cache
+  apt:
+    update_cache: yes
  
 
 - name: Install software-properties-common
@@ -14,9 +14,9 @@
   apt_repository:
     repo: ppa:vbernat/haproxy-2.4
 
-- name: Update apt cache
-  apt:
-    update_cache: yes
+# - name: Update apt cache
+#   apt:
+#     update_cache: yes
   
 - name: Download haproxy package
   apt:
