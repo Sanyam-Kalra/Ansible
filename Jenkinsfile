@@ -1,7 +1,9 @@
-
-
 pipeline {
     agent any
+    parameters {
+  choice choices: ['Apply', 'Destroy'], name: 'Infra'
+}
+
     stages {
         stage('terraform format check') {
             steps{
@@ -13,7 +15,22 @@ pipeline {
                 sh 'terraform init'
             }
         }
+        stage('terraform destroy'){
+            when {
+               
+                expression { params.Infra == 'Destroy' }
+            }
+            steps {
+                sh 'terraform destroy --auto-approve'
+            }
+        }
+
+
         stage('terraform apply'){
+             when {
+               
+                expression { params.Infra == 'Apply' }
+            }
             steps {
                 sh 'terraform apply --auto-approve'
             }
@@ -67,4 +84,4 @@ pipeline {
         }
     }
 }
-    
+  
