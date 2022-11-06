@@ -21,14 +21,8 @@ pipeline {
                 expression { params.Infra == 'Destroy' }
             }
             
-                  steps {
+            steps {
                 sh 'terraform destroy --auto-approve'
-            }
-            post {
-               always {
-        // One or more steps need to be included within each condition's block.
-         error("Build Aborted Infra Destroyed ${params.Infra}")
-                      }
             }
             
        }
@@ -42,6 +36,10 @@ pipeline {
             }
         }
         stage('terraform output'){
+             when {
+               
+                expression { params.Infra == 'Apply' }
+            }
             steps {
                 sh'''
                 chmod +x file.sh
@@ -50,6 +48,10 @@ pipeline {
             }
         }
        stage('Copy data'){
+         when {
+               
+                expression { params.Infra == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json public_config_ec2 | jq -s -r '.[]')
@@ -61,6 +63,10 @@ pipeline {
             }
         }
         stage('Git clone'){
+             when {
+               
+                expression { params.Infra == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json public_config_ec2 | jq -s -r '.[]')
@@ -71,6 +77,10 @@ pipeline {
             }
         }
         stage('Configure ansible'){
+             when {
+               
+                expression { params.Infra == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json public_config_ec2 | jq -s -r '.[]')
@@ -80,6 +90,10 @@ pipeline {
             }
         }
         stage('Role setup'){
+             when {
+               
+                expression { params.Infra == 'Apply' }
+            }
             steps {
                 sh'''
                  IP=$(terraform output -json public_config_ec2 | jq -s -r '.[]')
