@@ -85,7 +85,7 @@ pipeline {
                 sh'''
                 IP=$(terraform output -json public_config_ec2 | jq -s -r '.[]')
                 echo $IP
-                ssh -i "/var/lib/jenkins/haproxy.pem" -o StrictHostKeyChecking=no -tt ubuntu@$IP "sudo apt-get update -y && sudo apt-get install ansible -y"
+                ssh -i "/var/lib/jenkins/haproxy.pem" -o StrictHostKeyChecking=no -tt ubuntu@$IP "sudo apt update -y && sudo apt install ansible -y"
                 '''
             }
         }
