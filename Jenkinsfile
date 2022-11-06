@@ -20,15 +20,17 @@ pipeline {
                
                 expression { params.Infra == 'Destroy' }
             }
+            
                   steps {
                 sh 'terraform destroy --auto-approve'
             }
-             steps {
-        // Abort the build, skipping subsequent stages
-        error("Build Aborted Infra Destroyed ${params.Infra}")
-              }
+            post {
+               always {
+        // One or more steps need to be included within each condition's block.
+         error("Build Aborted Infra Destroyed ${params.Infra}")
+                      }
+            }
             
-          
        }
         stage('terraform apply'){
              when {
