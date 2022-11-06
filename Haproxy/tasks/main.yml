@@ -1,14 +1,15 @@
 ---
 # tasks file for Haproxy
-- name: Update & upgrade apt cache
-  apt:
-    update_cache: yes
+# - name: Update & upgrade apt cache
+#   apt:
+    
  
 
 - name: Install software-properties-common
   apt:
     name: software-properties-common
     state: present
+    update_cache: yes
 
 - name: Add apt repositories into source list
   apt_repository:
