@@ -1,35 +1,59 @@
 ---
 # tasks file for Haproxy
-# - name: Update & upgrade apt cache
-#   apt:
-    
- 
+- name: Update & upgrade apt cache
+  apt:
+    update_cache: yes
+   # upgrade: full
 
 - name: Install software-properties-common
   apt:
     name: software-properties-common
     state: present
-    update_cache: yes
 
 - name: Add apt repositories into source list
   apt_repository:
     repo: ppa:vbernat/haproxy-2.4
+  when: "'head' in group_names" 
 
-# - name: Update apt cache
-#   apt:
-#     update_cache: yes
+- name: Update apt cache
+  apt:
+    update_cache: yes
   
 - name: Download haproxy package
   apt:
     name: haproxy=2.4.18-0ubuntu1
     state: present
+  when: "'head' in group_names" 
+    
 - name: Copy the HAProxy config file to remote system
   template:
     src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
     mode: 0644
+  when: "'head' in group_names" 
 
 - name: Start service
   service:
     name: "haproxy"
     state: restarted
+  when: "'head' in group_names" 
+
+
+- name: Webserver installation
+  apt:
+   name: nginx
+   state: present
+  notify: Starting service nginx
+  when: "'Backend' in group_names" 
+
+- name: Updating content
+  copy:
+   src: index.nginx-debian.html
+   dest: /var/www/html/index.nginx-debian.html
+  when: "'Backend' in group_names" 
+
+- name: Start service
+  service:
+    name: "nginx"
+    state: restarted
+  when: "'Backend' in group_names" 
