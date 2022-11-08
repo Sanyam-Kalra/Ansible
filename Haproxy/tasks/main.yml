@@ -47,8 +47,8 @@
   when: "'Backend' in group_names" 
 
 - name: Updating content
-  copy:
-   src: index.nginx-debian.html
+  template:
+   src: index.nginx-debian.html.j2
    dest: /var/www/html/index.nginx-debian.html
   when: "'Backend' in group_names" 
 
