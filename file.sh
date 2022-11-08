@@ -6,7 +6,7 @@ touch  storefile
 echo "" > storefile
 IP=$(terraform output -json private-ip | jq -s -r '.[]')
 echo $IP >> storefile
- echo "[Head]" > Invnetory
+ echo "[head]" > Invnetory
  for line in $(cat storefile)
  do
      y=$(echo "${line}") 
