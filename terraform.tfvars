@@ -44,7 +44,7 @@ node_count = "1"
 
 instance_type = "t2.micro"
 
-ami = "ami-08c40ec9ead489470
+ami = "ami-08c40ec9ead489470"
 
 rt_tags_pvt = {
   Name = "Haproxy Priavte rt"
