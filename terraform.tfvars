@@ -38,7 +38,7 @@ rt_tags = {
   Name = "Haproxy_rt"
 }
 
-key_name = "haproxy"
+key_name = "newhaproxy"
 
 node_count = "1"
 
