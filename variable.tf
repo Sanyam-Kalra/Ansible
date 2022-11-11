@@ -103,7 +103,7 @@ variable "subnet_tags_pvt" {
 }
 
 variable "ami_ec2" {
-  default = "ami-003d5894701c2101e"
+  default = "ami-08c40ec9ead489470"
 }
 
 variable "tags_config" {
