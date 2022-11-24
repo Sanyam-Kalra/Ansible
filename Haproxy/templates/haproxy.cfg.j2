@@ -45,11 +45,19 @@ backend webapps
 server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:80 check
 {% endfor %}
     
-listen stats
-    bind *:81
-    stats enable
-    stats hide-version
-    stats refresh 30s
-    stats show-node
-    stats auth username:password
-    stats uri  /stats
+//listen stats
+  //  bind *:81
+    //stats enable
+    //stats hide-version
+    //stats refresh 30s
+    //stats show-node
+    //stats auth username:password
+    //stats uri  /stats
+    
+frontend stats
+   bind *:81
+   option http
+   http-request use-service prometheus-exporter if { path /metrics }
+   stats enable
+   stats uri /stats
+   stats refresh 10s
