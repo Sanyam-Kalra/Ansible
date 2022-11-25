@@ -1,5 +1,5 @@
 {% for server in groups['head'] %}
-- job_name: '{{ 'host' }}'
+- job_name: 'Haproxy'
   static_configs:
   - targets: ['{{ hostvars[host]['ansible_default_ipv4']['address'] }}:81']
 {% endfor %}
