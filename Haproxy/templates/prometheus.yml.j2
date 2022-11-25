@@ -6,5 +6,5 @@
   static_configs:
   - targets:
 {% for server in groups['head'] %}
-    - {{ hostvars['host']['ansible_default_ipv4']['address'] }}:81
+    - {{ hostvars[host]['ansible_default_ipv4']['address'] }}:81
 {% endfor %}
