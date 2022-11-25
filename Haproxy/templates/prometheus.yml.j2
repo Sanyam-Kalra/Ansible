@@ -1,12 +1,12 @@
 #jinja2: lstrip_blocks: "True"
 {{ prometheus_var_config | to_nice_yaml(indent=2) }}
 {% for host in groups['head'] %}
-- job_name: '{{ host }}'
+- job_name: {{ host }}
 {% endfor %}
   scrape_interval: 15s
   metrics_path: /metrics
   static_configs:
   - targets:
 {% for server in groups[head] %}
-    - '{{ hostvars[host]['ansible_default_ipv4']['address'] }}:9100'
+    - {{ hostvars[host]['ansible_default_ipv4']['address'] }}:9100
 {% endfor %}
