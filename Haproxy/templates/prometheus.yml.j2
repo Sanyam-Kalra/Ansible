@@ -33,7 +33,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['{{ ['ansible_default_ipv4']['address'] }}:9090']
+      - targets: ['{{ ansible_eth0.ipv4.address }}:9090']
 
   # - job_name: 'Haproxy'
   #   static_configs:
