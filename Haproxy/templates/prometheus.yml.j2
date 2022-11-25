@@ -5,6 +5,6 @@
   metrics_path: /metrics
   static_configs:
   - targets:
-{% for server in groups[head] %}
+{% for server in groups['head'] %}
     - {{ hostvars[host]['ansible_default_ipv4']['address'] }}:9100
 {% endfor %}
